@@ -1,16 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-
-// import RestaurantPage from './RestaurantPage'
-
 const RestaurantFeed = ({restaurants}) => {
-    // let [choice, setChoice] = useState("")
-    
-    // const handleClick = (e) => {
-    //     setChoice(e.target.value)
-    //     console.log(choice)
-    // }
     
     const restaurantList = restaurants.map((restaurant, i) => {
         return <Link key={i} to={`/restaurant/${restaurant.restaurant_id}`}><li>

@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-// import  './main.css'
 import RestaurantFeed from './RestaurantFeed';
 
 const Welcome = () =>{
@@ -19,7 +18,6 @@ const Welcome = () =>{
                     },                   
             })
             setRestaurants(res.data.result.data)
-            // debugger
     }catch(err){
     console.log(err)
         }
