@@ -19,7 +19,7 @@ const Welcome = () =>{
                     },                   
             })
             setRestaurants(res.data.result.data)
-            debugger
+            // debugger
     }catch(err){
     console.log(err)
         }

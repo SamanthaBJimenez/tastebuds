@@ -1,20 +1,19 @@
 import React, {useState} from 'react'
-import RestaurantPage from './RestaurantPage'
+// import RestaurantPage from './RestaurantPage'
 
 const RestaurantFeed = ({restaurants}) => {
-    // let [choice, setChoice] = useState("")
+    let [choice, setChoice] = useState("")
     
     const handleClick = (e) => {
-        // setChoice(e.target.children)
-        debugger
+        setChoice(e.target.value)
+        console.log(choice)
     }
     
     return(
-        <>
             <>
                 {restaurants.map(restaurant => {
                     return(
-                        <ul>
+                        <ul key={restaurant.restaurant_id}>
                         <li>
                         <button className = 'restaurants' value={restaurant.restaurant_id} onClick = {handleClick}>
                              <h3>{restaurant.restaurant_name}</h3>
@@ -27,10 +26,8 @@ const RestaurantFeed = ({restaurants}) => {
                     )
                 })}
             </>
-        </>
+
     )
 }
-{/* <RestaurantPage restaurant={restaurant}/> */}
-
 
 export default RestaurantFeed
