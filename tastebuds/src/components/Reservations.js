@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useInput } from '../util/customHooks';
 
 const CreateReservation = () => {
@@ -8,12 +8,33 @@ const CreateReservation = () => {
     const insta = useInput("");
     const date = useInput("");
     const time = useInput("");
+    const [createReservation, setReservation] = useState([])
 
     const handleReservation = (e) => {
-        debugger
+        let form = e.target
+        e.preventDefault();
+        setReservation([...createReservation,{
+            name: `${name.value}`,
+            insta: `${insta.value}`,
+            date: `${date.value}`,
+            time: `${time.value}`,
+        }])
+        form.reset();
     }
+ 
+    let reservations = createReservation.map((rez, i) => {
+        return (
+            <div key={i} className={"reservation"}>
+                <p>Name: {rez.name}</p>
+                <p>Insta: {rez.insta}</p>
+                <p>Date: {rez.date}</p>
+                <p>Time: {rez.time}</p>
+            </div>
+        )
+    })
 
     return (
+        <div>
         <div>
         <h3>Reserve Here</h3>
         <form onSubmit={handleReservation}>
@@ -30,6 +51,10 @@ const CreateReservation = () => {
             <br/>
             <button type="submit">Create Reservation</button>
         </form>
+        </div>
+        <div>
+            {reservations}
+        </div>
         </div>
     )
 }
