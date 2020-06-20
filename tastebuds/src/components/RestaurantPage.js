@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 // import NavBar from './NavBar'
@@ -6,6 +6,11 @@ import axios from 'axios';
 const RestaurantPage = () => {
     const params = useParams("/restaurant/:id");
     const { name } = params
+    const [restaurantName, setRestaurantName] = useState("");
+    const [cuisine, setCuisine] = useState("");
+    const [hours, setHours] = useState("");
+    const [address, setAddress] = useState("");
+    const [priceRange, setPriceRange] = useState("");
 
     useEffect(() => {
         const fetchRestaurant = async () => {
@@ -20,6 +25,11 @@ const RestaurantPage = () => {
                     },
                     })
                     debugger;
+                    setRestaurantName(res.data.result.restaurant_name);
+                    setCuisine(res.data.result.cuisines);
+                    setHours(res.data.result.hours);
+                    setAddress(res.data.result.address.formatted);
+                    setPriceRange(res.data.result.price_range);
             } catch (error){
                 console.log(error)
             }
@@ -30,6 +40,15 @@ const RestaurantPage = () => {
     return (
         <div> 
             Restaurant Page
+            <div>
+                <h3>
+                    {restaurantName}
+                </h3>
+                Cuisine: {cuisine}
+                Price: {priceRange}
+                Address: {address}
+                Hours: {hours}
+            </div>
         </div>
     )
 }
