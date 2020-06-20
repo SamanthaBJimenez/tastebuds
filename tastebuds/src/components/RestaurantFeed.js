@@ -26,6 +26,7 @@ const RestaurantFeed = ({restaurants}) => {
     return(
         <ul>
             {restaurantList}
+            {restaurantList.length ? restaurantList : <h1>Where We Bout To Eat At?</h1>}
         </ul>
 
     )
