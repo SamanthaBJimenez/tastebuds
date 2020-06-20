@@ -15,7 +15,6 @@ const RestaurantPage = () => {
     useEffect(() => {
         const fetchRestaurant = async () => {
             try {
-                // console.log(id)
                 let res = await axios({
                     method:"GET",
                     url:`https://us-restaurant-menus.p.rapidapi.com/restaurant/${name}`,
@@ -24,7 +23,6 @@ const RestaurantPage = () => {
                         'X-RapidAPI-Host': 'us-restaurant-menus.p.rapidapi.com' 
                     },
                     })
-                    debugger;
                     setRestaurantName(res.data.result.restaurant_name);
                     setCuisine(res.data.result.cuisines);
                     setHours(res.data.result.hours);
