@@ -8,7 +8,6 @@ const Welcome = () =>{
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
     try {
         let res = await axios({
             method: "GET",
@@ -18,7 +17,6 @@ const Welcome = () =>{
                 'X-RapidAPI-Host': 'us-restaurant-menus.p.rapidapi.com' 
                     },                   
             })
-            
             setRestaurants(res.data.result.data)
     }catch(err){
     console.log(err)
