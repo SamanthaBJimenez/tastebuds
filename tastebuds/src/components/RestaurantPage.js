@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-// import NavBar from './NavBar'
+import CreateReservation from './Reservations';
 
 const RestaurantPage = () => {
     const params = useParams("/restaurant/:id");
@@ -37,15 +37,19 @@ const RestaurantPage = () => {
 
     return (
         <div> 
-            Restaurant Page
             <div>
                 <h3>
                     {restaurantName}
                 </h3>
-                Cuisine: {cuisine}
-                Price: {priceRange}
-                Address: {address}
-                Hours: {hours}
+                <ul>
+                <li>Cuisine: {cuisine}</li>
+                <li>Price: {priceRange.length ? priceRange : "Price range not available"}</li>
+                <li>Address: {address}</li>
+                <li>Hours: {hours.length ? hours : "Hours Not Available"}</li>
+                </ul>
+            </div>
+            <div>
+                <CreateReservation />
             </div>
         </div>
     )
