@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import CreateReservation from './Reservations';
+import ExistingRes from './existingRes';
 
 const RestaurantPage = () => {
     const params = useParams("/restaurant/:id");
@@ -50,6 +51,7 @@ const RestaurantPage = () => {
             </div>
             <div>
                 <CreateReservation restaurantName={restaurantName}/>
+                {/* <ExistingRes restaurantName={restaurantName}/> */}
             </div>
         </div>
     )
