@@ -1,22 +1,28 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useInput } from '../util/customHooks';
 
-const JoinReservation = ({restaurantName}) => {
+const JoinReservation = ({restaurantName, id}) => {
     const name = useInput("");
     const email = useInput("");
     const phoneNumber = useInput("");
     const insta = useInput("");
     let reservation = localStorage.getItem(`${restaurantName}_reservations`)
+    let reservationID = localStorage.getItem(`resId`)
+    const [createReservation, setReservation] = useState(reservation);
     
+    // debugger
 
     const handleJoin = (e) => {
         e.preventDefault();
-        debugger
+        
+
+
     }
 
 
 
     return(
+        
         <form onSubmit={handleJoin}>
             <input type="text" placeholder="Full Name" required {...name}/>
             <br/>

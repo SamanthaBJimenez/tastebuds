@@ -11,23 +11,29 @@ const CreateReservation = ({restaurantName}) => {
     const insta = useInput("");
     const date = useInput("");
     const time = useInput("");
+    const [id,setId] = useState(0);
     const [show, setShow] = useState(false);
     const [createReservation, setReservation] = useState([]);
-    let id = 0;
+    
     
     const handleClose = () => setShow(false);
 
-    const handleReservation = (e,) => {
+    const handleShow = (rezId) => {
+        setShow(true)
+        localStorage.setItem('resId',rezId)
+    }
+
+    const handleReservation = (e) => {
         let form = e.target
         e.preventDefault();
-        id++;
+        setId(id+1)
         setReservation([...createReservation,{
-            id :{
+                id: id,
                 name: `${name.value}`,
                 insta: `${insta.value}`,
                 date: `${date.value}`,
                 time: `${time.value}`,
-            }
+            
         }])
         form.reset();
     }
@@ -37,11 +43,11 @@ const CreateReservation = ({restaurantName}) => {
         localStorage.setItem(`${restaurantName}_reservations`, JSON.stringify(createReservation))
         return (
             <div key={i} className={"reservation"}>
-                <p>Name: {rez.id.name}</p>
-                <p>Insta: {rez.id.insta}</p>
-                <p>Date: {rez.id.date}</p>
-                <p>Time: {rez.id.time}</p>
-                <button onClick = {()=> setShow(true)}>Join me!</button>
+                <p>Name: {rez.name}</p>
+                <p>Insta: {rez.insta}</p>
+                <p>Date: {rez.date}</p>
+                <p>Time: {rez.time}</p>
+                <button onClick = {()=>  handleShow(rez.id) }>Join me!</button>
                 
             </div>
         )
@@ -76,7 +82,7 @@ const CreateReservation = ({restaurantName}) => {
                 <Modal.Header closeButton>
                 <Modal.Title>Join me By Entering Info</Modal.Title>
                 </Modal.Header>
-                <Modal.Body> <JoinReservation/> </Modal.Body>
+                <Modal.Body> <JoinReservation id={id}/> </Modal.Body>
                 <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                     Close
