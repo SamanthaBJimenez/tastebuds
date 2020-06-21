@@ -14,7 +14,6 @@ const JoinReservation = ({restaurantName, id}) => {
 
     const handleJoin = (e) => {
         e.preventDefault();
-        
 
 
     }

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import CreateReservation from './Reservations';
 import ExistingRes from './existingRes';
+import data from '../components/data/data.json'
 
 const RestaurantPage = () => {
     const params = useParams("/restaurant/:id");
@@ -16,19 +17,19 @@ const RestaurantPage = () => {
     useEffect(() => {
         const fetchRestaurant = async () => {
             try {
-                let res = await axios({
-                    method:"GET",
-                    url:`https://us-restaurant-menus.p.rapidapi.com/restaurant/${name}`,
-                    headers:{
-                        'X-RapidAPI-Key': '5795adbc70mshf03f458b9c437e0p19c7e3jsn2a5c4a014b1d',
-                        'X-RapidAPI-Host': 'us-restaurant-menus.p.rapidapi.com' 
-                    },
-                    })
-                    setRestaurantName(res.data.result.restaurant_name);
-                    setCuisine(res.data.result.cuisines);
-                    setHours(res.data.result.hours);
-                    setAddress(res.data.result.address.formatted);
-                    setPriceRange(res.data.result.price_range);
+
+                const newData = data.map( (data,i) => {
+                    if(data.result.data[i].restaurant_id + "" === name){
+                        
+                    setRestaurantName(data.result.data[i].restaurant_name);
+                    setCuisine(data.result.data[i].cuisines);
+                    setHours(data.result.data[i].hours);
+                    setAddress(data.result.data[i].address.formatted);
+                    setPriceRange(data.result.data[i].price_range);
+                    }
+                   
+                })
+                  
             } catch (error){
                 console.log(error)
             }
@@ -46,7 +47,7 @@ const RestaurantPage = () => {
                 <li>Cuisine: {cuisine}</li>
                 <li>Price: {priceRange.length ? priceRange : "Price range not available"}</li>
                 <li>Address: {address}</li>
-                <li>Hours: {hours.length ? hours : "Hours Not Available"}</li>
+                {/* <li>Hours: {hours.length ? hours : "Hours Not Available"}</li> */}
                 </ul>
             </div>
             <div>
