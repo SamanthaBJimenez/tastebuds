@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { useInput } from '../util/customHooks';
 
-const CreateReservation = () => {
+const CreateReservation = ({restaurantName}) => {
     const name = useInput("");
     const email = useInput("");
     const phoneNumber = useInput("");
@@ -21,8 +21,10 @@ const CreateReservation = () => {
         }])
         form.reset();
     }
- 
+    
+    // let existingReservations = localStorage.getItem("reservation")
     let reservations = createReservation.map((rez, i) => {
+        localStorage.setItem(`${restaurantName}_reservations`, JSON.stringify(createReservation))
         return (
             <div key={i} className={"reservation"}>
                 <p>Name: {rez.name}</p>
@@ -38,13 +40,13 @@ const CreateReservation = () => {
         <div>
         <h3>Reserve Here</h3>
         <form onSubmit={handleReservation}>
-            <input type="text" placeholder="Full Name" {...name}/>
+            <input type="text" placeholder="Full Name" required {...name}/>
             <br/>
-            <input type="text" placeholder="Email Adress" {...email}/>
+            <input type="text"  placeholder="Email Adress" required {...email}/>
             <br/>
-            <input type="text" placeholder="Phone Number" {...phoneNumber}/>
+            <input type="text" placeholder="Phone Number" required {...phoneNumber}/>
             <br/>
-            <input type="text" placeholder="Drop Ya IG" {...insta}/>
+            <input type="text" placeholder="Drop Ya IG" required {...insta}/>
             <br/>
             <input type="date" {...date}/>
             <input type="time" {...time}/>
@@ -53,6 +55,7 @@ const CreateReservation = () => {
         </form>
         </div>
         <div>
+            <h3>Existing Reservations</h3>
             {reservations}
         </div>
         </div>

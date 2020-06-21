@@ -49,7 +49,7 @@ const RestaurantPage = () => {
                 </ul>
             </div>
             <div>
-                <CreateReservation />
+                <CreateReservation restaurantName={restaurantName}/>
             </div>
         </div>
     )
