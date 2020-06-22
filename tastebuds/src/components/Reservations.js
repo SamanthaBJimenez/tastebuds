@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import { useInput } from '../util/customHooks';
 import JoinReservation from './joinReservation';
+import ExistingRes from './existingRes';
 import { Button } from 'react-bootstrap'
 import { Modal } from 'react-bootstrap'
+import Congrats from './congrats'
 
 const CreateReservation = ({restaurantName}) => {
     const name = useInput("");
@@ -19,23 +21,36 @@ const CreateReservation = ({restaurantName}) => {
     const handleClose = () => setShow(false);
 
     const handleShow = (rezId) => {
-        setShow(true)
-        localStorage.setItem('resId',rezId)
+        setShow(true);
+        localStorage.setItem('resId',rezId);
+    }
+
+    const handleJoin = (e, name, email, phoneNumber,insta) => {
+            e.preventDefault();
+            let reservationID = localStorage.getItem(`resId`);
+            setShow(false);
+        const join = createReservation.map( (res,i) => {
+                if(res.id+ "" === reservationID){
+                   res.people = 2;
+                }
+            }) /// try add all infor from join res with same Id  Create an new object that's called accompany
     }
 
     const handleReservation = (e) => {
-        let form = e.target
+        let form = e.target;
         e.preventDefault();
-        setId(id+1)
+        setId(id+1);
         setReservation([...createReservation,{
                 id: id,
                 name: `${name.value}`,
                 insta: `${insta.value}`,
                 date: `${date.value}`,
                 time: `${time.value}`,
+                people: 1,
             
         }])
         form.reset();
+        
     }
     
     // let existingReservations = localStorage.getItem("reservation")
@@ -55,6 +70,7 @@ const CreateReservation = ({restaurantName}) => {
 
     return (
         <div>
+         <ExistingRes restaurantName={restaurantName} handleShow = {handleShow}/>
         <div>
         <h3>Reserve Here</h3>
         <form onSubmit={handleReservation}>
@@ -69,20 +85,21 @@ const CreateReservation = ({restaurantName}) => {
             <input type="date" {...date}/>
             <input type="time" {...time}/>
             <br/>
-            <input type='checkbox'/>Terms/policy
+            <input type='checkbox' required/> <a href='#wow'>Terms/policy</a>
             <button type="submit">Create Reservation</button>
         </form>
         </div>
         <div>
-            <h3>Existing Reservations</h3>
-            {reservations}
+            {/* <h3>Existing Reservations</h3>
+            {reservations} */}
             {/* <JoinReservation/> */}
+           
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                 <Modal.Title>Join me By Entering Info</Modal.Title>
                 </Modal.Header>
-                <Modal.Body> <JoinReservation id={id}/> </Modal.Body>
+                <Modal.Body> <JoinReservation handleJoin = {handleJoin} reservations = {createReservation}/> </Modal.Body>
                 <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                     Close
