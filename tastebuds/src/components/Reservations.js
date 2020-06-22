@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import { useInput } from '../util/customHooks';
 import JoinReservation from './joinReservation';
+import ExistingRes from './existingRes';
 import { Button } from 'react-bootstrap'
 import { Modal } from 'react-bootstrap'
+import Congrats from './congrats'
 
 const CreateReservation = ({restaurantName}) => {
     const name = useInput("");
@@ -26,15 +28,10 @@ const CreateReservation = ({restaurantName}) => {
     const handleJoin = (e, name, email, phoneNumber,insta) => {
             e.preventDefault();
             let reservationID = localStorage.getItem(`resId`);
+            setShow(false);
         const join = createReservation.map( (res,i) => {
                 if(res.id+ "" === reservationID){
-                    setReservation([{
-                        id: id,
-                        name: name,
-                        insta: `${insta.value}`,
-                        email: `${date.value}`,
-                        phoneNumber:`${time.value}`,
-                    },...createReservation]);
+                   res.people = 2;
                 }
             }) /// try add all infor from join res with same Id  Create an new object that's called accompany
     }
@@ -49,9 +46,11 @@ const CreateReservation = ({restaurantName}) => {
                 insta: `${insta.value}`,
                 date: `${date.value}`,
                 time: `${time.value}`,
+                people: 1,
             
         }])
         form.reset();
+        
     }
     
     // let existingReservations = localStorage.getItem("reservation")
@@ -71,6 +70,7 @@ const CreateReservation = ({restaurantName}) => {
 
     return (
         <div>
+         <ExistingRes restaurantName={restaurantName} handleShow = {handleShow}/>
         <div>
         <h3>Reserve Here</h3>
         <form onSubmit={handleReservation}>
@@ -85,14 +85,15 @@ const CreateReservation = ({restaurantName}) => {
             <input type="date" {...date}/>
             <input type="time" {...time}/>
             <br/>
-            <input type='checkbox'/>Terms/policy
+            <input type='checkbox' required/> <a href='#wow'>Terms/policy</a>
             <button type="submit">Create Reservation</button>
         </form>
         </div>
         <div>
-            <h3>Existing Reservations</h3>
-            {reservations}
+            {/* <h3>Existing Reservations</h3>
+            {reservations} */}
             {/* <JoinReservation/> */}
+           
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
