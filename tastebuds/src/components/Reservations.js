@@ -19,14 +19,30 @@ const CreateReservation = ({restaurantName}) => {
     const handleClose = () => setShow(false);
 
     const handleShow = (rezId) => {
-        setShow(true)
-        localStorage.setItem('resId',rezId)
+        setShow(true);
+        localStorage.setItem('resId',rezId);
+    }
+
+    const handleJoin = (e, name, email, phoneNumber,insta) => {
+            e.preventDefault();
+            let reservationID = localStorage.getItem(`resId`);
+        const join = createReservation.map( (res,i) => {
+                if(res.id+ "" === reservationID){
+                    setReservation([{
+                        id: id,
+                        name: name,
+                        insta: `${insta.value}`,
+                        email: `${date.value}`,
+                        phoneNumber:`${time.value}`,
+                    },...createReservation]);
+                }
+            }) /// try add all infor from join res with same Id  Create an new object that's called accompany
     }
 
     const handleReservation = (e) => {
-        let form = e.target
+        let form = e.target;
         e.preventDefault();
-        setId(id+1)
+        setId(id+1);
         setReservation([...createReservation,{
                 id: id,
                 name: `${name.value}`,
@@ -82,7 +98,7 @@ const CreateReservation = ({restaurantName}) => {
                 <Modal.Header closeButton>
                 <Modal.Title>Join me By Entering Info</Modal.Title>
                 </Modal.Header>
-                <Modal.Body> <JoinReservation id={id}/> </Modal.Body>
+                <Modal.Body> <JoinReservation handleJoin = {handleJoin} reservations = {createReservation}/> </Modal.Body>
                 <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                     Close
