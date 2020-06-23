@@ -1,0 +1,32 @@
+.split_one {
+    height: 100%;
+    width: 36%;
+    position: fixed;
+    z-index: 1;
+    /* top: 100px; */
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.left_one {
+    left: 0;
+    text-align: start;
+    background-color: #efefef;
+    padding-top: 100px;
+}
+
+.right_one {
+    right: 0;
+    top: 100px;
+}
+
+.rest_li {
+    list-style-type: none;
+    font-size: 21px;
+    margin: 20px 0px;
+}
+
+.rest_name {
+    font-size: 50px;
+    padding-left: 40px;
+}

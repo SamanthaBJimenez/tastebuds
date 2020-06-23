@@ -4,6 +4,7 @@ import axios from 'axios';
 import CreateReservation from './Reservations';
 import ExistingRes from './existingRes';
 import data from '../components/data/data.json'
+import '../css/RestaurantPage.css';
 
 const RestaurantPage = () => {
     const params = useParams("/restaurant/:id");
@@ -38,19 +39,19 @@ const RestaurantPage = () => {
     }, [name])
 
     return (
-        <div> 
-            <div>
-                <h3>
+        <div>
+            <div className = 'split_one left_one'>
+                <h3 className = 'rest_name'>
                     {restaurantName}
                 </h3>
                 <ul>
-                <li>Cuisine: {cuisine}</li>
-                <li>Price: {priceRange.length ? priceRange : "Price range not available"}</li>
-                <li>Address: {address}</li>
+                <li className = 'rest_li'>Cuisine: {cuisine}</li>
+                <li className = 'rest_li'>Price: {priceRange.length ? priceRange : "Price range not available"}</li>
+                <li className = 'rest_li'>Address: {address}</li>
                 {/* <li>Hours: {hours.length ? hours : "Hours Not Available"}</li> */}
                 </ul>
             </div>
-            <div>
+            <div className = 'split_one right_one'>
                 <CreateReservation restaurantName={restaurantName}/>
                 {/* <ExistingRes restaurantName={restaurantName}/> */}
             </div>
