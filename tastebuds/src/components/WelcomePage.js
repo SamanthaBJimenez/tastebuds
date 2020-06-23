@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import axios from 'axios'
 import RestaurantFeed from './RestaurantFeed';
 import data from '../components/data/data.json'
+import '../css/WelcomePage.css';
 
 const Welcome = () =>{
      let [zipcode, setZipcode] = useState("");
@@ -35,12 +36,11 @@ const Welcome = () =>{
     }
     return(
         <>
-        <h1>TasteBuds</h1>
-        <div className = 'img'>
-            <div className = 'form'>
-                <form onSubmit = {handleSubmit} >
-                    <input type = 'number' placeholder='Please enter a zip code' maxLength= "5" value={zipcode} onChange = {(e) => setZipcode(e.target.value)}/>
-                    <button>Find A Buddy!</button>
+        <div className = 'welcome_img'>
+            <div>
+                <form className = 'welcome_form' onSubmit = {handleSubmit} >
+                    <input className = 'zip_input' type = 'number' placeholder='Please enter a zip code' maxLength= "5" value={zipcode} onChange = {(e) => setZipcode(e.target.value)}/>
+                    <button className = 'search_button'>Find A Buddy!</button>
                 </form>
             </div>
         </div>
