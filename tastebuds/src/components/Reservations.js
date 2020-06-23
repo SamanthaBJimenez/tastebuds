@@ -5,6 +5,7 @@ import ExistingRes from './existingRes';
 import { Button } from 'react-bootstrap'
 import { Modal } from 'react-bootstrap'
 import Congrats from './congrats'
+import '../css/Reservations.css';
 
 const CreateReservation = ({restaurantName}) => {
     const name = useInput("");
@@ -70,23 +71,29 @@ const CreateReservation = ({restaurantName}) => {
 
     return (
         <div>
-         <ExistingRes restaurantName={restaurantName} handleShow = {handleShow}/>
-        <div>
-        <h3>Reserve Here</h3>
+            <div className = 'split_two left_two'>
+                <ExistingRes restaurantName={restaurantName} handleShow = {handleShow}/>
+            </div>
+        <div className = 'split_two right_two'>
+        <h3 className = 'reserve_header'>Reserve Here</h3>
         <form onSubmit={handleReservation}>
-            <input type="text" placeholder="Full Name" required {...name}/>
+            <input className = 'reserve_input' type="text" placeholder="Full Name" required {...name}/>
             <br/>
-            <input type="text"  placeholder="Email Adress" required {...email}/>
+            <input className = 'reserve_input' type="text"  placeholder="Email Adress" required {...email}/>
             <br/>
-            <input type="text" placeholder="Phone Number" required {...phoneNumber}/>
+            <input className = 'reserve_input' type="text" placeholder="Phone Number" required {...phoneNumber}/>
             <br/>
-            <input type="text" placeholder="Drop Ya IG" required {...insta}/>
+            <input className = 'reserve_input' type="text" placeholder="Drop Ya IG" required {...insta}/>
             <br/>
-            <input type="date" {...date}/>
-            <input type="time" {...time}/>
+            <input className = 'reserve_input' type="date" {...date}/>
             <br/>
-            <input type='checkbox' required/> <a href='#wow'>Terms/policy</a>
-            <button type="submit">Create Reservation</button>
+            <input className = 'reserve_input' type="time" {...time}/>
+            <br/>
+            <div className = 'reserve_checkbox'>
+                <input type='checkbox' required/> I accept and agree to the <a href='#wow'>Terms of Use</a>
+            </div>
+            <br/>
+            <button className = 'reserve_button' type="submit">Create Reservation</button>
         </form>
         </div>
         <div>
@@ -101,8 +108,7 @@ const CreateReservation = ({restaurantName}) => {
                 </Modal.Header>
                 <Modal.Body> <JoinReservation handleJoin = {handleJoin} reservations = {createReservation}/> </Modal.Body>
                 <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                    Close
+                <Button className = 'modalButton' variant="secondary" onClick={handleClose}>
                 </Button>
                 </Modal.Footer>
             </Modal>
