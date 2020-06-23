@@ -1,0 +1,30 @@
+.join_input {
+    background: rgba(var(--b3f,250,250,250),1);
+    overflow: hidden;
+    padding: 7px 0px 7px 11px;
+    border: 1px solid rgba(var(--ca6,219,219,219),1);
+    border-radius: 3px;
+    font: inherit;
+    width: 183px;
+    outline: none;
+    margin: 4px 0px;
+}
+
+.join_button {
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 8px;
+    margin-top: 14px;
+    cursor: pointer;
+    padding: 5px 9px;
+    color: rgba(var(--eca,255,255,255),1);
+    border: 1px solid transparent;
+    background-color: #AE0100;
+    font: inherit;
+    border-radius: 4px;
+    outline: none;
+}
+
+.join_button {
+    filter: brightness(85%);
+}
