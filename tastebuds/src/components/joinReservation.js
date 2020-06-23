@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { useInput } from '../util/customHooks';
+import '../css/joinReservation.css';
 
 const JoinReservation = ({reservations, handleJoin}) => {
     const name = useInput("");
@@ -36,16 +37,17 @@ const JoinReservation = ({reservations, handleJoin}) => {
     return(
         
         <form onSubmit={(e) => handleJoin(e, name,email,phoneNumber,insta)}>
-            <input type="text" placeholder="Full Name" required {...name}/>
+            <input className = 'join_input' type="text" placeholder="Full Name" required {...name}/>
             <br/>
-            <input type="text"  placeholder="Email Adress" required {...email}/>
+            <input className = 'join_input' type="text"  placeholder="Email Adress" required {...email}/>
             <br/>
-            <input type="text" placeholder="Phone Number" required {...phoneNumber}/>
+            <input className = 'join_input' type="text" placeholder="Phone Number" required {...phoneNumber}/>
             <br/>
-            <input type="text" placeholder="Drop Ya IG" required {...insta}/>
+            <input className = 'join_input' type="text" placeholder="Drop Ya IG" required {...insta}/>
             <br/>
             <input type='checkbox'/>Terms/policy
-            <button type="submit">Join Reservation</button>
+            <br/>
+            <button className = 'join_button' type="submit">Join Reservation</button>
         </form>
     )
 
