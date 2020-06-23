@@ -1,4 +1,5 @@
 import React from 'react'
+import '../css/existingRes.css';
 
 const ExistingRes = ({restaurantName, handleShow}) => {
     let reservation = localStorage.getItem(`${restaurantName}_reservations`)
@@ -10,11 +11,11 @@ const ExistingRes = ({restaurantName, handleShow}) => {
             if(rez.people === 1){
                 return (
                     <div key={i} className={"reservation"}>
-                        <p>Name: {rez.name}</p>
-                        <p>Insta: {rez.insta}</p>
-                        <p>Date: {rez.date}</p>
-                        <p>Time: {rez.time}</p>
-                        <button onClick = {()=>  handleShow(rez.id) }>Join me!</button>
+                        <p className = 'exist_info'>Name: <b>{rez.name}</b></p>
+                        <p className = 'exist_info'>Insta: <b>{rez.insta}</b></p>
+                        <p className = 'exist_info'>Date: <b>{rez.date}</b></p>
+                        <p className = 'exist_info'>Time: <b>{rez.time}</b></p>
+                        <button className = 'exist_button' onClick = {()=>  handleShow(rez.id) }>Join me!</button>
                     </div>
                 )
             }
@@ -24,7 +25,7 @@ const ExistingRes = ({restaurantName, handleShow}) => {
 
     return (
         <div>
-            <h3>Existing Reservations</h3>
+            <h3 className = 'exist_header'>Existing Reservations</h3>
             {reservations}
         </div>
     )
