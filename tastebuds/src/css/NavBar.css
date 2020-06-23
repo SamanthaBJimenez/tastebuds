@@ -1,0 +1,14 @@
+.logo_link {
+    /* height: 90px; */
+    display: flex;
+    position: absolute;
+}
+
+.logo {
+    height: 90px;
+}
+
+.navbar {
+    z-index: 3;
+    position: absolute;
+}
