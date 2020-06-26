@@ -48,12 +48,12 @@ const RestaurantPage = () => {
                 <li className = 'rest_li'>Cuisine: {cuisine}</li>
                 <li className = 'rest_li'>Price: {priceRange.length ? priceRange : "Price range not available"}</li>
                 <li className = 'rest_li'>Address: {address}</li>
-                {/* <li>Hours: {hours.length ? hours : "Hours Not Available"}</li> */}
+                <li className = 'rest_li'>Hours: {hours.length ? hours : "Hours Not Available"}</li>
                 </ul>
             </div>
             <div className = 'split_one right_one'>
                 <CreateReservation restaurantName={restaurantName}/>
-                {/* <ExistingRes restaurantName={restaurantName}/> */}
+             
             </div>
         </div>
     )

@@ -16,31 +16,39 @@ const CreateReservation = ({restaurantName}) => {
     const time = useInput("");
     const [id,setId] = useState(0);
     const [show, setShow] = useState(false);
+    const [congrat, setCongrat] = useState(false);
     const [createReservation, setReservation] = useState([]);
     
     
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false) 
+        setCongrat(false)
+    };
 
     const handleShow = (rezId) => {
         setShow(true);
         localStorage.setItem('resId',rezId);
     }
 
-    const handleJoin = (e, name, email, phoneNumber,insta) => {
+    const handleJoin = (e) => {
             e.preventDefault();
             let reservationID = localStorage.getItem(`resId`);
             setShow(false);
+            setCongrat(true);
+            
         const join = createReservation.map( (res,i) => {
                 if(res.id+ "" === reservationID){
                    res.people = 2;
                 }
-            }) /// try add all infor from join res with same Id  Create an new object that's called accompany
-    }
+            }) 
+         }
 
     const handleReservation = (e) => {
         let form = e.target;
+        setCongrat(true);
         e.preventDefault();
         setId(id+1);
+        
         setReservation([...createReservation,{
                 id: id,
                 name: `${name.value}`,
@@ -54,7 +62,7 @@ const CreateReservation = ({restaurantName}) => {
         
     }
     
-    // let existingReservations = localStorage.getItem("reservation")
+
     let reservations = createReservation.map((rez, i) => {
         localStorage.setItem(`${restaurantName}_reservations`, JSON.stringify(createReservation))
         return (
@@ -90,16 +98,14 @@ const CreateReservation = ({restaurantName}) => {
             <input className = 'reserve_input' type="time" {...time}/>
             <br/>
             <div className = 'reserve_checkbox'>
-                <input type='checkbox' required/> I accept and agree to the <a href='#wow'>Terms of Use</a>
+                <input type='checkbox' required/> I accept and agree to the <a href='/TermsPolicies'>Terms of Use</a>
             </div>
             <br/>
             <button className = 'reserve_button' type="submit">Create Reservation</button>
         </form>
         </div>
         <div>
-            {/* <h3>Existing Reservations</h3>
-            {reservations} */}
-            {/* <JoinReservation/> */}
+           {congrat? <Congrats/>: null}
            
 
             <Modal show={show} onHide={handleClose}>
