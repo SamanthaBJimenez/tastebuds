@@ -10,28 +10,6 @@ const JoinReservation = ({reservations, handleJoin}) => {
     let reservationID = localStorage.getItem(`resId`)
     const [createReservation, setReservation] = useState(reservations);
     
-    // debugger
-
-    // const handleJoin = (e) => {
-    //     e.preventDefault();
-
-    //     const join = createReservation.map( (res,i) => {
-    //         if(res.id+ "" === reservationID){
-    //             setReservation([...createReservation,{
-    //                 acommpany: {
-    //                     name: `${name.value}`,
-    //                     insta: `${insta.value}`,
-    //                 }
-        
-    //             }])
-    //         }
-    //         console.log(createReservation)
-    //         debugger
-           
-    //     })
-
-    // }
-
 
 
     return(
@@ -45,7 +23,7 @@ const JoinReservation = ({reservations, handleJoin}) => {
             <br/>
             <input className = 'join_input' type="text" placeholder="Drop Ya IG" required {...insta}/>
             <br/>
-            <input type='checkbox'/>Terms/policy
+            <input type='checkbox' required/> I accept and agree to the <a href='/TermsPolicies'>Terms of Use</a>
             <br/>
             <button className = 'join_button' type="submit">Join Reservation</button>
         </form>

@@ -11,21 +11,6 @@ const Welcome = () =>{
     const handleSubmit = async (e) => {
         e.preventDefault();
     try {
-
-        
-        // let res = await axios({
-        //     method: "GET",
-        //     url:`https://us-restaurant-menus.p.rapidapi.com/restaurants/zip_code/${zipcode}`,
-        //     headers: {
-        //         'X-RapidAPI-Key': '5795adbc70mshf03f458b9c437e0p19c7e3jsn2a5c4a014b1d',
-        //         'X-RapidAPI-Host': 'us-restaurant-menus.p.rapidapi.com' 
-        //             },                   
-        //     })
-            // setRestaurants(res.data.result.data)
-
-            // const newData = data.map( data => {
-            //     debugger
-            // })
             let newdata = data;
             
             setRestaurants(newdata[0].result.data)
