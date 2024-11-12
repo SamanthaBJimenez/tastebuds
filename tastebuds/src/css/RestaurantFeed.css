@@ -1,11 +1,11 @@
 .restaurant_ul {
     list-style-type: none;
     position: relative;
-    justify-content: center;
-    overflow: scroll;
-    column-count: 2;
+    /* justify-content: center; */
+    /* overflow: scroll; */
+    /* column-count: 2; */
     padding: 0;
-    height: 1395px;
+    /* height: 1395px; */
 }
 
 .restaurant_button {
@@ -32,8 +32,8 @@
 
 .feedBlurbDiv {
     position: relative;
-    top: 300px;
-    left: -50%;
+    /* top: 300px; */
+    /* left: -50%; */
 }
 
 .feed_blurbTwo {
