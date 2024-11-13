@@ -6,8 +6,6 @@ const ExistingRes = ({ restaurantName, handleShow }) => {
   let currentRes = JSON.parse(reservation);
   let reservations = [];
 
-//   console.log(currentRes);
-
   if (currentRes != null) {
     reservations = currentRes.map((rez, i) => {
       if (rez.people === 1) {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useInput } from "../util/customHooks";
 import "../css/joinReservation.css";
 
