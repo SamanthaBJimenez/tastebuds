@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useInput } from "../util/customHooks";
 import JoinReservation from "./joinReservation";
 import ExistingRes from "./existingRes";
-import { Button } from "react-bootstrap";
 import { Modal } from "react-bootstrap";
 import Congrats from "./congrats";
 import "../css/Reservations.css";
@@ -65,7 +64,6 @@ const CreateReservation = ({ restaurantName }) => {
     insta.reset();
     date.reset();
     time.reset();
-    // e.target.reset();
   };
 
   let reservations = createReservation.map((rez, i) => {
@@ -152,11 +150,6 @@ const CreateReservation = ({ restaurantName }) => {
             />{" "}
           </Modal.Body>
           <Modal.Footer>
-            <Button
-              className="modalButton"
-              variant="secondary"
-              onClick={handleClose}
-            ></Button>
           </Modal.Footer>
         </Modal>
       </div>

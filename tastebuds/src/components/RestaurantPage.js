@@ -18,7 +18,9 @@ const RestaurantPage = () => {
   useEffect(() => {
     const fetchRestaurant = async () => {
       try {
-        const newData = data.map((data, i) => {
+        // const newData = 
+        console.log(data)
+        data.map((data, i) => {
           if (data.result.data[i].restaurant_id + "" === name) {
             setRestaurantName(data.result.data[i].restaurant_name);
             setCuisine(data.result.data[i].cuisines);
