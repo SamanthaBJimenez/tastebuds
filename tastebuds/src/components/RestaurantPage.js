@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import CreateReservation from "./Reservations";
-import ExistingRes from "./existingRes";
 import data from "../components/data/data.json";
 import "../css/RestaurantPage.css";
 
@@ -18,15 +16,15 @@ const RestaurantPage = () => {
   useEffect(() => {
     const fetchRestaurant = async () => {
       try {
-        // const newData = 
-        console.log(data)
-        data.map((data, i) => {
-          if (data.result.data[i].restaurant_id + "" === name) {
-            setRestaurantName(data.result.data[i].restaurant_name);
-            setCuisine(data.result.data[i].cuisines);
-            setHours(data.result.data[i].hours);
-            setAddress(data.result.data[i].address.formatted);
-            setPriceRange(data.result.data[i].price_range);
+        let restaurants = data[0].result.data;
+
+        restaurants.map((restaurant) => {
+          if (restaurant.restaurant_id + "" === name) {
+            setRestaurantName(restaurant.restaurant_name);
+            setCuisine(restaurant.cuisines);
+            setHours(restaurant.hours);
+            setAddress(restaurant.address.formatted);
+            setPriceRange(restaurant.price_range);
           }
         });
       } catch (error) {
