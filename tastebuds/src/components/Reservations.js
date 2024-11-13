@@ -34,7 +34,7 @@ const CreateReservation = ({ restaurantName }) => {
     setShow(false);
     setCongrat(true);
 
-    const join = createReservation.map((res, i) => {
+    createReservation.map((res) => {
       if (res.id + "" === reservationID) {
         res.people = 2;
       }
@@ -42,7 +42,6 @@ const CreateReservation = ({ restaurantName }) => {
   };
 
   const handleReservation = (e) => {
-    // let form = e.target;
     setCongrat(true);
     e.preventDefault();
     setId(id + 1);
@@ -149,8 +148,7 @@ const CreateReservation = ({ restaurantName }) => {
               reservations={reservations}
             />{" "}
           </Modal.Body>
-          <Modal.Footer>
-          </Modal.Footer>
+          <Modal.Footer></Modal.Footer>
         </Modal>
       </div>
     </div>
